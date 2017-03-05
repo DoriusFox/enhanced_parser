@@ -35,7 +35,7 @@ using System.Diagnostics;
 [assembly: AssemblyTitle("The Secret World parser for group damage, heal and tank statistics")]
 [assembly: AssemblyDescription("Read through the CombatLog.txt files and parse the combat and healing done (ACT3)")]
 [assembly: AssemblyCopyright("Author of default parser: Boorish, since 1.0.5.4 Lausi; Contributions from: Eafalas, Holok, Inkraja, Akamiko; Enhanced version (since 1.1.7.1) made by Doriafox; ")]
-[assembly: AssemblyVersion("1.1.7.3)]
+[assembly: AssemblyVersion("1.1.7.31")]
 // This plugin is based on the Rift3 plugin by Creub and Altuslumen.  Thanks guys :)
 // Fix for glance and penetrate hits fom Holok
 // Added Incoming Damage (takencrit%, takenpen&, ...) to chat export (Holok)
@@ -1705,27 +1705,27 @@ namespace SecretParse_Plugin
                 string combat_duration = encounter.Duration.TotalSeconds > 599 ? encounter.DurationS : encounter.DurationS.Substring(1, 4);
                 string hitpoints = encounter.Damage.ToString("#,##0", usCulture);
                 string hdrOutput = "";
+                long aegis_hp = GetSpecialHitData(encounter, SecretLanguage.Aegis);
+                if (aegis_hp != 0)
+                {
+                    hitpoints += " [" + aegis_hp.ToString("#,##0", usCulture) + "]";
+                }
+				string Expl = "";
+                if (checkBox_ExportShowLegend.Checked)
+                {
+                    if (aegis_hp != 0) Expl = AddString(Expl, "[aeg]");
+                    if (IsExportFieldSet("pen%")) Expl = AddString(Expl, "%p");
+                    if (IsExportFieldSet("crit%")) Expl = AddString(Expl, "%c");
+                    if (IsExportFieldSet("glance%")) Expl = AddString(Expl, "%g");
+                    if (IsExportFieldSet("block%")) Expl = AddString(Expl, "%b");
+                    if (IsExportFieldSet("evade%")) Expl = AddString(Expl, "%e");
+                    if (IsExportFieldSet("aegismismatch%") && (aegis_hp != 0)) Expl = AddString(Expl, "%mm");
+                    Expl = " (" + Expl + ")<br>";
+                }
                 string hdrDamage = exportColored ? "<font face=LARGE_BOLD color=red>Damage:</font>" + Expl : "-- Damage:" + Expl;
                 string hdrHeal = exportColored ? "<font face=LARGE_BOLD color=#25d425>Heal:</font><br>" : "-- Heal:<br>";
                 string hdrTank = exportColored ? "<font face=LARGE_BOLD color=#09e4ea>Tank:</font><br>" : "-- Tank:<br>";
                 string hdrMax = exportColored ? "<font face=LARGE_BOLD color=#FF8C00>Best:</font><br>" : "-- Best:<br>";
-		long aegis_hp = GetSpecialHitData(encounter, SecretLanguage.Aegis);
-		if (aegis_hp != 0)
-		{
-			hitpoints += " [" + aegis_hp.ToString("#,##0", usCulture) + "]";
-                }
-		string Expl = "";
-		if (checkBox_ExportShowLegend.Checked)
-                {
-			if (aegis_hp != 0) Expl = AddString(Expl, "[aeg]");
-			if (IsExportFieldSet("pen%")) Expl = AddString(Expl, "%p");
-			if (IsExportFieldSet("crit%")) Expl = AddString(Expl, "%c");
-			if (IsExportFieldSet("glance%")) Expl = AddString(Expl, "%g");
-			if (IsExportFieldSet("block%")) Expl = AddString(Expl, "%b");
-			if (IsExportFieldSet("evade%")) Expl = AddString(Expl, "%e");
-			if (IsExportFieldSet("aegismismatch%") && (aegis_hp != 0)) Expl = AddString(Expl, "%mm");
-			Expl = " (" + Expl + ")<br>";
-		}
                 string lineReduced = "({0} more)<br>";
                 List<String> lineDamage = new List<String>();
                 List<String> lineHeal = new List<String>();
