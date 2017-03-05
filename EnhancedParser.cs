@@ -1709,6 +1709,11 @@ namespace SecretParse_Plugin
                 string hdrHeal = exportColored ? "<font face=LARGE_BOLD color=#25d425>--- Heal</font><br>" : "--- Heal<br>";
                 string hdrTank = exportColored ? "<font face=LARGE_BOLD color=#09e4ea>--- Tank</font><br>" : "--- Tank<br>";
                 string hdrMax = exportColored ? "<font face=LARGE_BOLD color=#be09cc>--- Max</font><br>" : "--- Max<br>";
+		long aegis_hp = GetSpecialHitData(encounter, SecretLanguage.Aegis);
+		if (aegis_hp != 0)
+		{
+			hitpoints += " [" + aegis_hp.ToString("#,##0", usCulture) + "]";
+                }
 		string Expl = "";
 		if (checkBox_ExportShowLegend.Checked)
                 {
@@ -1728,11 +1733,6 @@ namespace SecretParse_Plugin
                 List<String> lineMax = new List<String>();
 
                 // Gather data for damage, heal, tank and max
-                long aegis_hp = GetSpecialHitData(encounter, SecretLanguage.Aegis);
-                if (aegis_hp != 0)
-                {
-                    hitpoints += " [" + aegis_hp.ToString("#,##0", usCulture) + "]";
-                }
                 string heading = string.Format("total: {2} dmg, {0} dps in {1}", encounter.DPS.ToString("#,##0", usCulture), combat_duration, hitpoints);
                 hdrOutput = string.Format("<a href=\"text://<div align=center><font face=HEADLINE color=red>{0}</font><br><font face=HUGE color=#FF6600>{1}</font></div><br><font face=LARGE>", title, heading);
 
@@ -1943,7 +1943,12 @@ namespace SecretParse_Plugin
                 if (scriptToLong && checkBox_ExportSplit.Checked)
                 {
                     // actchatsplit chat script
-                    lineSplit.Append("<font color=red>[ ").Append(title).Append(" - ").Append(heading).Append(" ]</font>").AppendLine();
+		    string aegisdamageraid = "";
+		    if (aegis_hp != 0)
+		    {
+		    	aegisdamageraid += " <font color=#1cbcea>[" + aegis_hp.ToString("#,##0", usCulture) + "]</font>";
+		    }
+		    lineSplit.Append("<font color=#ffef8f>[ ").Append("<font color=#b4ffa8>" + title + "</font>").Append(" - ").Append(encounter.Damage.ToString("#,##0", usCulture)).Append(aegisdamageraid).Append(" Damage, ").Append(encounter.DPS.ToString("#,##0", usCulture)).Append(" DPS in ").Append(combat_duration).Append(" ]</font>").AppendLine();
 
                     string linkStart = "<a href=\"text://<div align=center><font face=HEADLINE color=red>";
                     string linkCenter = "</font><br><font face=HUGE color=#FF6600>";
