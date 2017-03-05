@@ -2157,18 +2157,18 @@ namespace SecretParse_Plugin
                 switch (fieldName)
                 {
                     case "dps":
-                        BeforeField += entry["dmg_script"] + " ";
-                        if (entry["aegisdmg_script"] != "") BeforeField += (exportColored ? "<font face=LARGE color=#1cbcea>[" : "[") + entry["aegisdmg_script"] + (exportColored ? "]</font> " : "] ");
+                        BeforeField += ("- ") + entry["dmg_script"] + " ";
+                        if (entry["aegisdmg_script"] != "") BeforeField += (exportColored ? "<font color=#1cbcea>[" : "[") + entry["aegisdmg_script"] + (" - ") + entry["aegisdps"] + (" dps") + (exportColored ? "]</font> " : "] ");
                         BeforeField += "(";
-                        if (entry["aegisdmg_script"] != "") AfterField += (exportColored ? " <font face=LARGE color=#1cbcea>[" : " [") + entry["aegisdps"] + (exportColored ? "]</font>" : "]");
+                        //if (entry["aegisdmg_script"] != "") AfterField += (" [") + entry["aegisdps"] + ("]");
                         AfterField += " dps in " + entry["duration"] + ")";
                         break;
                     case "hps":
-                        BeforeField += entry["healing_script"] + " ";
-                        if (entry["aegisheal_script"] != "") BeforeField += (exportColored ? "<font face=LARGE color=#1cbcea>[" : "[") + entry["aegisheal_script"] + (exportColored ? "]</font> " : "] ");
+                        BeforeField += ("- ") + entry["healing_script"] + " ";
+                        if (entry["aegisheal_script"] != "") BeforeField += (exportColored ? "<font color=#1cbcea>[" : "[") + entry["aegisheal_script"] + (" - ") + entry["aegishps"] + (" hps") + (exportColored ? "]</font> " : "] ");
                         BeforeField += "(";
-                        if (entry["aegisheal_script"] != "") AfterField += (exportColored ? " <font face=LARGE color=#1cbcea>[" : " [") + entry["aegishps"] + (exportColored ? "]</font>" : "]");
-                        AfterField += " hps in " + entry["healduration"] + ")";
+                        //if (entry["aegisheal_script"] != "") AfterField += (" [") + entry["aegishps"] + ("]");
+                        AfterField += " hps in " + entry["healduration"] + ") -";
                         break;
                     case "pen%":
                         AfterField = "p";
@@ -2192,10 +2192,11 @@ namespace SecretParse_Plugin
                         AfterField = "a";
                         break;
                     case "takendamage":
-                        if (entry["aegisinc_script"] != "") AfterField += (exportColored ? " <font face=LARGE color=#1cbcea>[" : " [") + entry["aegisinc_script"] + (exportColored ? "]</font>" : "]");
+                        BeforeField = " - ";
+			if (entry["aegisinc_script"] != "") AfterField += (exportColored ? "<font color=#1cbcea> [" : " [") + entry["aegisinc_script"] + (" - ") + entry["takenaegisdps"] + (" idps") + (exportColored ? "]</font>" : "]");
                         AfterField += " (";
                         AfterField += entry["takendps"];
-                        if (entry["aegisinc_script"] != "") AfterField += (exportColored ? " <font face=LARGE color=#1cbcea>[" : " [") + entry["takenaegisdps"] + (exportColored ? "]</font>" : "]");
+                        //if (entry["aegisinc_script"] != "") AfterField += (" [") + entry["takenaegisdps"] + ("]");
                         AfterField += " idps in " + entry["takenduration"] + ")";
                         break;
                     case "takencrit%":
