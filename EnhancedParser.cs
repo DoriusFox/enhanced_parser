@@ -1705,10 +1705,10 @@ namespace SecretParse_Plugin
                 string combat_duration = encounter.Duration.TotalSeconds > 599 ? encounter.DurationS : encounter.DurationS.Substring(1, 4);
                 string hitpoints = encounter.Damage.ToString("#,##0", usCulture);
                 string hdrOutput = "";
-                string hdrDamage = exportColored ? "<font face=LARGE_BOLD color=red>--- Damage</font>" + Expl : "--- Damage" + Expl;
-                string hdrHeal = exportColored ? "<font face=LARGE_BOLD color=#25d425>--- Heal</font><br>" : "--- Heal<br>";
-                string hdrTank = exportColored ? "<font face=LARGE_BOLD color=#09e4ea>--- Tank</font><br>" : "--- Tank<br>";
-                string hdrMax = exportColored ? "<font face=LARGE_BOLD color=#be09cc>--- Max</font><br>" : "--- Max<br>";
+                string hdrDamage = exportColored ? "<font face=LARGE_BOLD color=red>Damage:</font>" + Expl : "-- Damage:" + Expl;
+                string hdrHeal = exportColored ? "<font face=LARGE_BOLD color=#25d425>Heal:</font><br>" : "-- Heal:<br>";
+                string hdrTank = exportColored ? "<font face=LARGE_BOLD color=#09e4ea>Tank:</font><br>" : "-- Tank:<br>";
+                string hdrMax = exportColored ? "<font face=LARGE_BOLD color=#FF8C00>Best:</font><br>" : "-- Best:<br>";
 		long aegis_hp = GetSpecialHitData(encounter, SecretLanguage.Aegis);
 		if (aegis_hp != 0)
 		{
@@ -1756,14 +1756,14 @@ namespace SecretParse_Plugin
                         }
 
                         string combatant = string.Format("{0}", tempName);
-                        combatant += AddChatScriptField(entry, "dps");
+                        combatant += AddChatScriptField(entry, "dps") + (exportColored ? "<br><font color=#7e7e7e>" : " - ");
                         combatant += AddChatScriptField(entry, "pen%");
                         combatant += AddChatScriptField(entry, "crit%");
                         combatant += AddChatScriptField(entry, "glance%");
                         combatant += AddChatScriptField(entry, "block%");
                         combatant += AddChatScriptField(entry, "evade%");
                         if (aegis_hp != 0) combatant += AddChatScriptField(entry, "aegismismatch%");
-                        lineDamage.Add(combatant + "<br>");
+                        lineDamage.Add(combatant + "<br>" + (exportColored ? "</font>":""));
                     }
                 }
 
@@ -1818,13 +1818,13 @@ namespace SecretParse_Plugin
                         }
 
                         string combatant = string.Format("{0}", tempName);
-                        combatant += AddChatScriptField(entry, "takendamage");
+                        combatant += AddChatScriptField(entry, "takendamage") + (exportColored ? "<br><font color=#7e7e7e>" : " -");
                         combatant += AddChatScriptField(entry, "takenpen%");
                         combatant += AddChatScriptField(entry, "takencrit%");
                         combatant += AddChatScriptField(entry, "takenglance%");
                         combatant += AddChatScriptField(entry, "takenblock%");
                         combatant += AddChatScriptField(entry, "takenevade%");
-                        lineTank.Add(combatant + "<br>");
+                        lineTank.Add(combatant + "<br>" + (exportColored ? "</font>":""));
                     }
                 }
 
