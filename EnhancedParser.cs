@@ -1733,8 +1733,8 @@ namespace SecretParse_Plugin
                 List<String> lineMax = new List<String>();
 
                 // Gather data for damage, heal, tank and max
-                string heading = string.Format("total: {2} dmg, {0} dps in {1}", encounter.DPS.ToString("#,##0", usCulture), combat_duration, hitpoints);
-                hdrOutput = string.Format("<a href=\"text://<div align=center><font face=HEADLINE color=red>{0}</font><br><font face=HUGE color=#FF6600>{1}</font></div><br><font face=LARGE>", title, heading);
+                string heading = string.Format("{2} Damage, {0} DPS in {1}", encounter.DPS.ToString("#,##0", usCulture), combat_duration, hitpoints);
+                hdrOutput = string.Format("<a href=\"text://<div align=center><font face=HEADLINE color=#b4ffa8>{0}</font><br><font face=HUGE color=#ffef8f>{1}</font></div><br><font face=LARGE>", title, heading);
 
                 if (IsExportFieldSet("dps") || IsExportFieldSet("crit%") || IsExportFieldSet("pen%") || IsExportFieldSet("glance%") || IsExportFieldSet("block%") || IsExportFieldSet("evade%") || (IsExportFieldSet("aegismismatch%") && (aegis_hp != 0)))
                 {
@@ -1950,8 +1950,8 @@ namespace SecretParse_Plugin
 		    }
 		    lineSplit.Append("<font color=#ffef8f>[ ").Append("<font color=#b4ffa8>" + title + "</font>").Append(" - ").Append(encounter.Damage.ToString("#,##0", usCulture)).Append(aegisdamageraid).Append(" Damage, ").Append(encounter.DPS.ToString("#,##0", usCulture)).Append(" DPS in ").Append(combat_duration).Append(" ]</font>").AppendLine();
 
-                    string linkStart = "<a href=\"text://<div align=center><font face=HEADLINE color=red>";
-                    string linkCenter = "</font><br><font face=HUGE color=#FF6600>";
+                    string linkStart = "<a href=\"text://<div align=center><font face=HEADLINE color=#b4ffa8>";
+                    string linkCenter = "</font><font face=HUGE color=#ffef8f><br>";
                     string linkEnd = "</font></div><br><font face=LARGE>";
                     string tagDivStart = "<div>";
                     string tagDivEnd = "</div><br>";
