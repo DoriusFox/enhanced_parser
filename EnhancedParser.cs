@@ -182,7 +182,7 @@ namespace SecretParse_Plugin
             this.checkBox_LimitNames.Name = "checkBox_LimitNames";
             this.checkBox_LimitNames.Size = new System.Drawing.Size(159, 17);
             this.checkBox_LimitNames.TabIndex = 4;
-            this.checkBox_LimitNames.Text = "Limit playernames to 7 chars";
+            this.checkBox_LimitNames.Text = "Limit playernames to 10 chars";
             this.checkBox_LimitNames.UseVisualStyleBackColor = true;
             this.checkBox_LimitNames.MouseHover += new System.EventHandler(this.checkBox_LimitNames_MouseHover);
             //
@@ -1697,7 +1697,7 @@ namespace SecretParse_Plugin
             string scriptFolder = GetScriptFolder();
             if (Directory.Exists(scriptFolder))
             {
-                const int NameLength = 7;
+                const int NameLength = 10;
                 StringBuilder line = new StringBuilder();
                 StringBuilder lineSplit = new StringBuilder();
                 bool exportColored = checkBox_ExportColored.Checked;
@@ -4023,7 +4023,7 @@ namespace SecretParse_Plugin
 
         private void checkBox_LimitNames_MouseHover(object sender, EventArgs e) {
             ActGlobals.oFormActMain.SetOptionsHelpText("Limit Player-Names\n\n" +
-                                   "Limits the playernames to 7 characters using /actchat.");
+                                   "Limits the playernames to 10 characters using /actchat.");
         }
 
         private void checkBox_ExportRoundDPS_MouseHover(object sender, EventArgs e)
