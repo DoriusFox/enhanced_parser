@@ -206,7 +206,7 @@ namespace SecretParse_Plugin
             this.checkBox_ExportShowLegend.Name = "checkBox_ExportShowLegend";
             this.checkBox_ExportShowLegend.Size = new System.Drawing.Size(155, 17);
             this.checkBox_ExportShowLegend.TabIndex = 6;
-            this.checkBox_ExportShowLegend.Text = "Show legend in TSW script";
+            this.checkBox_ExportShowLegend.Text = "Show legend near Damage";
             this.checkBox_ExportShowLegend.UseVisualStyleBackColor = true;
             this.checkBox_ExportShowLegend.MouseHover += new System.EventHandler(this.checkBox_ExportShowLegend_MouseHover);
             //
@@ -1705,10 +1705,22 @@ namespace SecretParse_Plugin
                 string combat_duration = encounter.Duration.TotalSeconds > 599 ? encounter.DurationS : encounter.DurationS.Substring(1, 4);
                 string hitpoints = encounter.Damage.ToString("#,##0", usCulture);
                 string hdrOutput = "";
-                string hdrDamage = exportColored ? "<font face=LARGE_BOLD color=red>--- Damage</font><br>" : "--- Damage<br>";
+                string hdrDamage = exportColored ? "<font face=LARGE_BOLD color=red>--- Damage</font>" + Expl : "--- Damage" + Expl;
                 string hdrHeal = exportColored ? "<font face=LARGE_BOLD color=#25d425>--- Heal</font><br>" : "--- Heal<br>";
                 string hdrTank = exportColored ? "<font face=LARGE_BOLD color=#09e4ea>--- Tank</font><br>" : "--- Tank<br>";
                 string hdrMax = exportColored ? "<font face=LARGE_BOLD color=#be09cc>--- Max</font><br>" : "--- Max<br>";
+		string Expl = "";
+		if (checkBox_ExportShowLegend.Checked)
+                {
+			if (aegis_hp != 0) Expl = AddString(Expl, "[aeg]");
+			if (IsExportFieldSet("pen%")) Expl = AddString(Expl, "%p");
+			if (IsExportFieldSet("crit%")) Expl = AddString(Expl, "%c");
+			if (IsExportFieldSet("glance%")) Expl = AddString(Expl, "%g");
+			if (IsExportFieldSet("block%")) Expl = AddString(Expl, "%b");
+			if (IsExportFieldSet("evade%")) Expl = AddString(Expl, "%e");
+			if (IsExportFieldSet("aegismismatch%") && (aegis_hp != 0)) Expl = AddString(Expl, "%mm");
+			Expl = " (" + Expl + ")<br>";
+		}
                 string lineReduced = "({0} more)<br>";
                 List<String> lineDamage = new List<String>();
                 List<String> lineHeal = new List<String>();
@@ -1839,19 +1851,6 @@ namespace SecretParse_Plugin
                     }
                 }
 
-                string Expl = "";
-                if (checkBox_ExportShowLegend.Checked)
-                {
-                    if (aegis_hp != 0) Expl = AddString(Expl, "[aegis]");
-                    if (IsExportFieldSet("pen%") || IsExportFieldSet("takenpen%")) Expl = AddString(Expl, "p=pen");
-                    if (IsExportFieldSet("crit%") || IsExportFieldSet("takencrit%") || IsExportFieldSet("healcrit%")) Expl = AddString(Expl, "c=crit");
-                    if (IsExportFieldSet("glance%") || IsExportFieldSet("takenglance%")) Expl = AddString(Expl, "g=glance");
-                    if (IsExportFieldSet("block%") || IsExportFieldSet("takenblock%")) Expl = AddString(Expl, "b=block");
-                    if (IsExportFieldSet("evade%") || IsExportFieldSet("takenevade%")) Expl = AddString(Expl, "e=evade");
-                    if (IsExportFieldSet("aegismismatch%") && (aegis_hp != 0)) Expl = AddString(Expl, "a=aegis mismatch");
-                    Expl = "<br><font face=HUGE color=#828282>" + Expl + "</font>";
-                }
-
                 // Build page
                 line.Append(hdrOutput);
                 line.Append("<div>");
@@ -1873,7 +1872,7 @@ namespace SecretParse_Plugin
                 AppendLineMax(lineMax, hdrMax, line);
                 line.Append("</div>");
                 line.Append("</font>");
-                line.AppendFormat(Expl + "\">{0} - {1}</a>", title, heading);
+                line.AppendFormat("\">{0} - {1}</a>", title, heading);
 
                 int DmgLen = GetTotalLength(lineDamage);
                 int HealLen = GetTotalLength(lineHeal);
@@ -1977,7 +1976,7 @@ namespace SecretParse_Plugin
                         }
                         lineSplit.Append(tagDivEnd);
                         AppendLineMax(lineMax, hdrMax, lineSplit);
-                        lineSplit.Append(tagFontEnd).Append(Expl).Append(linkDamage).AppendLine();
+                        lineSplit.Append(tagFontEnd).Append(linkDamage).AppendLine();
                     }
 
                     // Heal Report
@@ -1995,7 +1994,7 @@ namespace SecretParse_Plugin
                         }
                         lineSplit.Append(tagDivEnd);
                         AppendLineMax(lineMax, hdrMax, lineSplit);
-                        lineSplit.Append(tagFontEnd).Append(Expl).Append(linkHeal).AppendLine();
+                        lineSplit.Append(tagFontEnd).Append(linkHeal).AppendLine();
                     }
 
                     // Tank Report
@@ -2013,7 +2012,7 @@ namespace SecretParse_Plugin
                         }
                         lineSplit.Append(tagDivEnd);
                         AppendLineMax(lineMax, hdrMax, lineSplit);
-                        lineSplit.Append(tagFontEnd).Append(Expl).Append(linkTank);
+                        lineSplit.Append(tagFontEnd).Append(linkTank);
                     }
                 }
 
