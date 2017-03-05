@@ -3167,12 +3167,12 @@ namespace SecretParse_Plugin
             string[] ext = { "", "k", "m", "g" };
             int idx = 0;
             float calc = value;
-            while (calc > 500 && idx < ext.Length-1)
+            while (calc > 1000 && idx < ext.Length-1)
             {
                 calc /= 1000;
                 idx++;
             }
-            return calc.ToString((idx==0)?"0":"0.00", usCulture) + ext[idx];
+            return calc.ToString((idx==0)?"0":(idx==1)?"0":"0.00", usCulture) + ext[idx];
         }
 
         void oFormActMain_BeforeLogLineRead(bool isImport, LogLineEventArgs logInfo)
