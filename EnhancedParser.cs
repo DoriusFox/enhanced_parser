@@ -2034,6 +2034,17 @@ namespace SecretParse_Plugin
                             writer.WriteLine(output);
                         }
                     }
+		    using (TextWriter writer = new StreamWriter(Path.Combine(scriptFolder, "ac"), false, Encoding.GetEncoding(1252)))
+                    {
+                        if (scriptToLong && checkBox_ExportSplit.Checked)
+                        {
+                            writer.WriteLine(lineSplit.ToString());
+                        }
+                        else
+                        {
+                            writer.WriteLine(output);
+                        }
+                    }
                     using (TextWriter writer = new StreamWriter(Path.Combine(scriptFolder, "acttell"), false, Encoding.GetEncoding(1252)))
                     {
                         writer.WriteLine(SecretLanguage.WhisperCmd + " %1 " + output);
