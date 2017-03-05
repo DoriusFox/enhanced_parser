@@ -647,7 +647,7 @@ namespace SecretParse_Plugin
 			margin: 0;
 			padding: 0 15px 0 0;
 			font:bold 22px/22px ""Trebuchet MS"", sans-serif;
-			color:#f72c17;
+			color:#b4ffa8;
 			text-align:right;
 		}
 		#tabs {
@@ -667,7 +667,7 @@ namespace SecretParse_Plugin
 			padding: 0 15px 0 0;
 			float: right;
 			font:bold 16px/35px ""Trebuchet MS"", sans-serif;
-			color:#fb8b13;
+			color:#ffef8f;
 		}
 		#tabs a {
 			background: #d0e5f5;
@@ -783,8 +783,8 @@ namespace SecretParse_Plugin
 	<ul id=""tabs"">
 		<li><a href="""" title=""tab1"">Group Damage</a></li>
 		<li><a href="""" title=""tab2"">My Buffs</a></li>
-		<li><a href="""" title=""tab3"">Big Numbers</a></li>
-		<li class=""title"">total: {3} dmg, {1} dps in {2}</li>
+		<li><a href="""" title=""tab3"">Best Numbers</a></li>
+		<li class=""title"">{3} Damage, {1} DPS in {2}</li>
 	</ul>";
         private static string HTML_TABLE_DAMAGE = @"
 	<div id=""content"">
