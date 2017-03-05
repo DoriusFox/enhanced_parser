@@ -4326,7 +4326,7 @@ namespace SecretParse_Plugin
 //            DamageWithoutOrigin = new HashSet<string>();
 
             damageLines = new List<Regex>();
-            string apostropheSkills = "Thor's Hammer|Nightmare's Edge|Miner's Claw|Gaia's Presence|Carter's Burning|Angel's Touch|Adam's Rib|Dream's End|Stone's Throw|Mjolnir's Echo|Shadow's Shadow|The Carver's Art|Dragon's Breath|The Inspector's Gadget|Protector's Wrath|Keziah Mason's Ring";
+            string apostropheSkills = "Thor's Hammer|Nightmare's Edge|Miner's Claw|Gaia's Presence|Carter's Burning|Angel's Touch|Adam's Rib|Dream's End|Stone's Throw|Mjolnir's Echo|Shadow's Shadow|The Carver's Art|Dragon's Breath|The Inspector's Gadget|Protector's Wrath|Keziah Mason's Ring|Death's Note";
             damageLines.Add(new Regex(@"^(?<actor>Your|.*'s)\s(?<attackName>" + apostropheSkills + @")\sdealt\s(?<amount>[0-9]+)\sdamage\sto\s(?<actee>.+)\.$", RegexOptions.Compiled));
             damageLines.Add(new Regex(@"^(?<actor>Your|.*'s)\s(?<attackName>.+?)\sdealt\s(?<amount>[0-9]+)\sdamage\sto\s(?<actee>.+)\.$", RegexOptions.Compiled));
             damageLines.Add(new Regex(@"^(?<crit>\(Critical\)\s)?(?<actor>Your|.*'s)\s(?<attackName>" + apostropheSkills + @")\shits\s(?<damageType>\([^\)]+\)\s)?(?<actee>.+)\sfor\s(?<amount>[0-9]+)(?<damageClass>.*?)(?<ignore>\sdamage)?\.(?<blockType>\s\([^\)]+\))?", RegexOptions.Compiled));
