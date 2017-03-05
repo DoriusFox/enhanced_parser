@@ -2151,7 +2151,7 @@ namespace SecretParse_Plugin
         {
             if (IsExportFieldSet(fieldName))
             {
-                string BeforeField = " - ";
+                string BeforeField = " ";
                 string AfterField = "";
                 bool exportColored = checkBox_ExportColored.Checked;
                 switch (fieldName)
@@ -2171,25 +2171,25 @@ namespace SecretParse_Plugin
                         AfterField += " hps in " + entry["healduration"] + ") -";
                         break;
                     case "pen%":
-                        AfterField = "p";
+                        BeforeField = "";
                         break;
                     case "crit%":
-                        AfterField = "c";
+                        BeforeField = " - ";
                         break;
                     case "glance%":
-                        AfterField = "g";
+                        BeforeField = " - ";
                         break;
                     case "block%":
-                        AfterField = "b";
+                        BeforeField = " - ";
                         break;
                     case "healcrit%":
-                        AfterField = "c";
+                        AfterField = "";
                         break;
                     case "evade%":
-                        AfterField = "e";
+                        BeforeField = " - ";
                         break;
                     case "aegismismatch%":
-                        AfterField = "a";
+			if (IsExportFieldSet("aegismismatch%")) BeforeField = " - ";
                         break;
                     case "takendamage":
                         BeforeField = " - ";
@@ -2200,19 +2200,19 @@ namespace SecretParse_Plugin
                         AfterField += " idps in " + entry["takenduration"] + ")";
                         break;
                     case "takencrit%":
-                        AfterField = "c";
+                        AfterField = " -";
                         break;
                     case "takenpen%":
-                        AfterField = "p";
+                        AfterField = " -";
                         break;
                     case "takenglance%":
-                        AfterField = "g";
+                        AfterField = " -";
                         break;
                     case "takenblock%":
-                        AfterField = "b";
+                        AfterField = " -";
                         break;
                     case "takenevade%":
-                        AfterField = "e";
+                        AfterField = "";
                         break;
                 }
                 return string.Format("{0}{1}{2}", BeforeField, entry[fieldName], AfterField);
