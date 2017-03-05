@@ -32,7 +32,7 @@ using System.Diagnostics;
 // WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 // SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-[assembly: AssemblyTitle("Secret World damage and heal parse")]
+[assembly: AssemblyTitle("The Secret World parser for group damage, heal and tank statistics")]
 [assembly: AssemblyDescription("Read through the CombatLog.txt files and parse the combat and healing done (ACT3)")]
 [assembly: AssemblyCopyright("Author: Boorish, since 1.0.5.4 Lausi; Contributions from: Eafalas, Holok, Inkraja, Akamiko; ***")]
 [assembly: AssemblyVersion("1.0.7.1")]
@@ -217,7 +217,7 @@ namespace SecretParse_Plugin
             this.checkBox_ExportColored.Name = "checkBox_ExportColored";
             this.checkBox_ExportColored.Size = new System.Drawing.Size(87, 17);
             this.checkBox_ExportColored.TabIndex = 7;
-            this.checkBox_ExportColored.Text = "Colored Chat";
+            this.checkBox_ExportColored.Text = "Colored Export";
             this.checkBox_ExportColored.UseVisualStyleBackColor = true;
             this.checkBox_ExportColored.MouseHover += new System.EventHandler(this.checkBox_ExportColored_MouseHover);
             //
@@ -334,7 +334,7 @@ namespace SecretParse_Plugin
             this.checkBox_ReduceAegis.Name = "checkBox_ReduceAegis";
             this.checkBox_ReduceAegis.Size = new System.Drawing.Size(142, 17);
             this.checkBox_ReduceAegis.TabIndex = 17;
-            this.checkBox_ReduceAegis.Text = "Reduce Aegis on names";
+            this.checkBox_ReduceAegis.Text = "Delete AEGIS shield from encounter";
             this.checkBox_ReduceAegis.UseVisualStyleBackColor = true;
             this.checkBox_ReduceAegis.MouseHover += new System.EventHandler(this.checkBox_ReduceAegis_MouseHover);
             //
@@ -946,13 +946,13 @@ namespace SecretParse_Plugin
 
             Task.Factory.StartNew(() => { CheckTSWACTEnabled(this); });
 
-            if ((lblStatus.Text != "Secret plugin unloaded") && (lblStatus.Text != "No Status"))
+            if ((lblStatus.Text != "Parser plugin unloaded") && (lblStatus.Text != "No Status"))
             {
-                lblStatus.Text = lblStatus.Text + "\nSecret plugin loaded";
+                lblStatus.Text = lblStatus.Text + "\nParser Plugin successfuly loaded!";
             }
             else
             {
-                lblStatus.Text = "Secret plugin loaded";
+                lblStatus.Text = "\"The Secret World\" Parser plugin successfuly loaded!";
             }
         }
 
