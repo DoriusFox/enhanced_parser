@@ -1,14 +1,14 @@
 # THE SECRET WORLD - Enhanced Parser
-Enhanced Parser - improved version of default parser with another looking, bug fixes and minor changes.
+Enhanced Parser - improved version of default parser with another looking, bug fixes and minor changes.  
 This parser had been writen only for personal using, but many peoples ask to share it and here it is.
 
 Make sure you've checked all settings in ACT /Option tab.
 
-Useful links:
-Default Parser with Instuctions and Troubleshooting can be found here:
-https://tswact.wordpress.com
-Changed Parser by Inkraja:
-http://inkraja.github.io/Advanced-Combat-Tracker/
+Useful links:  
+Default Parser with Instuctions and Troubleshooting can be found here:  
+https://tswact.wordpress.com  
+Changed Parser by Inkraja:  
+http://inkraja.github.io/Advanced-Combat-Tracker/  
  
 # Changelog:
  
