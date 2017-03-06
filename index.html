@@ -12,6 +12,30 @@
     <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
+    <style>
+    img {
+    border-radius: 8px;
+    transition: .5s ease;
+    }
+    
+    body {margin:25px;}
+    div.polaroid {
+      width: 100%;
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+      margin-bottom: 25px;
+    }
+    div.container {
+      text-align: center;
+      padding: 8px 0px 1px;
+    }
+      
+    img:hover {
+    transition: .5s ease;
+    opacity: 0.9;
+    }
+    </style>
   </head>
   <body>
     <div class="wrapper">
@@ -32,7 +56,13 @@
         <p>Enhanced Parser - improved version of default parser with another looking, <br>bug fixes and minor changes.<br>This parser had been writen only for personal using, but many peoples ask to share <br>it and here it is.</p>
         <p>Make sure you've configured all settings in ACT /Option tab using Instruction from the link below.</p>
         <blockquote><p>Useful links:<br>Default Parser with Instuctions and Troubleshooting can be found here:<br>     <a href="https://tswact.wordpress.com/">https://tswact.wordpress.com</a><br>Changed Parser by Inkraja:<br>     <a href="http://inkraja.github.io/Advanced-Combat-Tracker/">http://inkraja.github.io/Advanced-Combat-Tracker/</a></p></blockquote>
-        
+        <div class="polaroid" align="center"><br>
+          <a href="https://doriusfox.github.io/enhanced_parser/images/color.jpg"><img src="images/color.jpg" alt="Colored Export" style="width:48%"></a>&nbsp
+          <a href="https://doriusfox.github.io/enhanced_parser/images/noncolor.jpg"><img src="images/noncolor.jpg" alt="NonColored Export" style="width:48%"></a>
+          <div class="container">
+            <p>Enabled Color Export / Disabled Color Export</p>
+          </div>
+        </div>
         <h1>Version 1.1.7.3</h1>
         <pre>1. Fix for Signet of Death's Note
 2. Disabling the color export function now will disable all colors in script
