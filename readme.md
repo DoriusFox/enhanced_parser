@@ -1,8 +1,8 @@
 # THE SECRET WORLD - Enhanced Parser
-Enhanced Parser - improved version of default parser with another looking, bug fixes and minor changes.  
-This parser had been writen only for personal using, but many peoples ask to share it and here it is.
+Enhanced Parser - improved version of default parser with another visuals, bug fixes and minor changes.  
+This parser has been written only for personal use, but many people asked to share it, so there it is.  
 
-Make sure you've checked all settings in ACT /Option tab.
+Make sure all settings in the ACT /Option tab have been configured by using Instructions from the link below.  
 
 Useful links:  
 Default Parser with Instuctions and Troubleshooting can be found here:  
