@@ -41,6 +41,13 @@ header, section, footer {
 a {
   color: #069;
   text-decoration: none;
+  transition: .2s ease;
+}
+
+a:hover {
+  color: #56ad4e;
+  text-decoration: none;
+  transition: .2s ease;
 }
 
 p {
