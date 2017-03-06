@@ -219,6 +219,18 @@ header ul a {
   height: 40px;
   text-shadow: rgba(0, 0, 0, 0.4) 0 -1px 0;
 }
+header ul a:hover {
+  line-height: 1;
+  font-size: 11px;
+  color: #fff;
+  color: rgba(255, 255, 255, 0.8);
+  display: block;
+  text-align: center;
+  font-weight: 400;
+  padding-top: 6px;
+  height: 40px;
+  text-shadow: rgba(0, 0, 0, 0.4) 0 -1px 0;
+}
 header ul a strong {
   font-size: 14px;
   display: block;
