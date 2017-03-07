@@ -1720,9 +1720,9 @@ namespace SecretParse_Plugin
                     if (IsExportFieldSet("block%")) Expl = AddString(Expl, "%b");
                     if (IsExportFieldSet("evade%")) Expl = AddString(Expl, "%e");
                     if (IsExportFieldSet("aegismismatch%") && (aegis_hp != 0)) Expl = AddString(Expl, "%mm");
-                    Expl = " (" + Expl + ")<br>";
+                    Expl = " (" + Expl + ")";
                 }
-                string hdrDamage = exportColored ? "<font face=LARGE_BOLD color=red>Damage:</font><br>" + Expl : "-- Damage:" + Expl;
+                string hdrDamage = exportColored ? "<font face=LARGE_BOLD color=red>Damage:</font>" + Expl + "<br>": "-- Damage:" + Expl +"<br>";
                 string hdrHeal = exportColored ? "<font face=LARGE_BOLD color=#25d425>Heal:</font><br>" : "-- Heal:<br>";
                 string hdrTank = exportColored ? "<font face=LARGE_BOLD color=#09e4ea>Tank:</font><br>" : "-- Tank:<br>";
                 string hdrMax = exportColored ? "<font face=LARGE_BOLD color=#FF8C00>Best:</font><br>" : "-- Best:<br>";
