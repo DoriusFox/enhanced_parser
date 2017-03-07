@@ -1701,6 +1701,7 @@ namespace SecretParse_Plugin
                 StringBuilder line = new StringBuilder();
                 StringBuilder lineSplit = new StringBuilder();
                 bool exportColored = checkBox_ExportColored.Checked;
+		bool exportShowLegend = checkBox_ExportShowLegend.Checked;
                 string title = encounter.Title.Replace("\"", "&quot;");
                 string combat_duration = encounter.Duration.TotalSeconds > 599 ? encounter.DurationS : encounter.DurationS.Substring(1, 4);
                 string hitpoints = encounter.Damage.ToString("#,##0", usCulture);
@@ -1720,9 +1721,9 @@ namespace SecretParse_Plugin
                     if (IsExportFieldSet("block%")) Expl = AddString(Expl, "%b");
                     if (IsExportFieldSet("evade%")) Expl = AddString(Expl, "%e");
                     if (IsExportFieldSet("aegismismatch%") && (aegis_hp != 0)) Expl = AddString(Expl, "%mm");
-                    Expl = " (" + Expl + ")";
+                    Expl = " (" + Expl + ")<br>";
                 }
-                string hdrDamage = exportColored ? "<font face=LARGE_BOLD color=red>Damage:</font>" + Expl + "<br>": "-- Damage:" + Expl +"<br>";
+                string hdrDamage = exportColored ? "<font face=LARGE_BOLD color=red>Damage:</font>" + (exportShowLegend ? Expl : "<br>"): "-- Damage:" + (exportShowLegend ? Expl : "<br>");
                 string hdrHeal = exportColored ? "<font face=LARGE_BOLD color=#25d425>Heal:</font><br>" : "-- Heal:<br>";
                 string hdrTank = exportColored ? "<font face=LARGE_BOLD color=#09e4ea>Tank:</font><br>" : "-- Tank:<br>";
                 string hdrMax = exportColored ? "<font face=LARGE_BOLD color=#FF8C00>Best:</font><br>" : "-- Best:<br>";
