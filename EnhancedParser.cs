@@ -35,7 +35,7 @@ using System.Diagnostics;
 [assembly: AssemblyTitle("The Secret World parser for group damage, heal and tank statistics")]
 [assembly: AssemblyDescription("Read through the CombatLog.txt files and parse the combat and healing done (ACT3)")]
 [assembly: AssemblyCopyright("Author of default parser: Boorish, since 1.0.5.4 Lausi; Contributions from: Eafalas, Holok, Inkraja, Akamiko; Enhanced version (since 1.1.7.1) made by Doriafox; ")]
-[assembly: AssemblyVersion("1.1.7.3")]
+[assembly: AssemblyVersion("1.1.7.3003")]
 // This plugin is based on the Rift3 plugin by Creub and Altuslumen.  Thanks guys :)
 // Fix for glance and penetrate hits fom Holok
 // Added Incoming Damage (takencrit%, takenpen&, ...) to chat export (Holok)
