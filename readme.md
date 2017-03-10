@@ -11,7 +11,11 @@ Changed Parser by Inkraja:
 http://inkraja.github.io/Advanced-Combat-Tracker/  
  
 # Changelog:
- 
+
+## 1.1.7.3001/3
+* Fixed correct new line if Show legend turned off
+* Minor bug fixes
+
 ## 1.1.7.3
 * Fix for **Signet of Death's Note**
 * Disabling the color export function now will disable all colors in script
